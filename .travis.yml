@@ -1,0 +1,14 @@
+language: ruby
+cache:
+- bundler
+before_script:
+- bundle exec rake db:create
+- bundle exec rake db:migrate
+- bundle exec rake assets:precompile
+deploy:
+  provider: heroku
+  api_key:
+    secure: "r7DkhZx2vC7549j58/OrVxBJRtwdOwya1z3Pvrbzb9AhGEYDxhkXAKW1CxcJIQQdgXgD+Ktn98u52KCBy+1oWxmYZmKUoCBUQaOlr2u2StyzDTMVrfNdGw+WxvRvd21HbfPfqHE1h31vnvhY8DMCCIn7jQPJdbKg9RXQtxJ1vezzWZPNNLmAYUsNjvO0gwFWQkB0/W/y71iz9XrI1mYuqlCiQYszLSH2Bx/iHkt44lhFAazrxOMwkciceSS7DgkVKtS7WeyBIMtksTzpEqZ1Xv4lyfPzPrUOfTD2WYwHt/1v1XdqYNeDz95Tmoe5iBc3xTKNZwGIw4BrTRtQB6iNqEUgeYRuontlmIuMAokpuv9iJfrdx/hhGpjPxLXMIZO02Pp6YD2RtAOhowFePl4SfpAUVhAZvRybaZ/Tk9snyQC1oa3PCkZLrbUWY0RK8oTCgDx5KDSF/+SDIMh1109xX2CcKbIWEq+fHqE1nNmMuOWG7g/ySSwLlRH2TfMeTcI8ooy1/zw6akgztXc9DO+koEc7RiOLIHxC1oazmc1Cy/xpkx+ONHo32FYofS3gawu/LGuc8EFIP9c+qRQhxe7ECoN9pRkMG5pSQcJy9D4DiLNXUxrzQmmxYbiYxyV4uA/f3Ts//sm+xBicZ0wDMMTafWnuAxTjkhCwHeOHqHSiUv8="
+  app: sinatra-app-derek
+  on:
+    repo: backslashbaker/sinatra_app
